@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('wdywgApp')
-  .controller('MainCtrl', function ($scope, $location,  AWSService, UserService, $sessionStorage) {
+  .controller('MainCtrl', function ($scope, $location,  AWSService, UserService ) {
         $scope.signedIn = function(oauth) {
             UserService.setCurrentUser(oauth)
                 .then(function(user) {
                     $scope.user = user;
 
-                    $scope.sessionStorage =  user
+
 
                     $location.path('/map');
 

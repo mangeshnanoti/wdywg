@@ -8,8 +8,7 @@ angular
         'ngRoute',
         'uiGmapgoogle-maps',
         'wdywgApp.services',
-        'wdywgApp.directives',
-        'ngStorage'
+        'wdywgApp.directives'
     ])
     .config(function (AWSServiceProvider) {
         AWSServiceProvider

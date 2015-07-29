@@ -1,5 +1,5 @@
 angular.module('wdywgApp.services', [])
-.factory('UserService', function($q, $http, AWSService, $sessionStorage) {
+.factory('UserService', function($q, $http, AWSService) {
   var service = {
     _user: null,
     UsersTable: "Users",
