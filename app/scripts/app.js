@@ -34,6 +34,10 @@ angular
                 templateUrl: 'views/home.html',
                 controller: 'HomeCtrl'
             })
+            .when('/ngMap', {
+                templateUrl: 'views/map.html',
+                controller: 'mapCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });
