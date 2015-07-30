@@ -71,13 +71,16 @@ angular.module('wdywgApp.services', [])
               });
             })
           });
+
         });
       }
       return d.promise;
     },
      counter: function() {
       var d = $q.defer();
+
       service.currentUser().then(function(user) {
+
         AWSService.dynamo({
           params: {TableName: service.counterTable}
         }).then(function(table) {
@@ -103,11 +106,11 @@ angular.module('wdywgApp.services', [])
               d.resolve(data);
             } else {
               d.reject(err);
-
             }
           })
         });
       });
+         console.log(d.promise)
       return d.promise;
     }
   };

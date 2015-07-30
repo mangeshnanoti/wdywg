@@ -42,6 +42,10 @@ angular
                 templateUrl: '/views/template/registerCustomer.html',
                 controller: 'addBizCtrl'
             })
+            .when('/dashboard', {
+                templateUrl: 'views/dashboard.html',
+                controller: 'DashboardCtrl'
+            })
               .when('/sidePage',{
               templateUrl: '/views/template/sidePage.html',
               controller: 'sideCtrl'

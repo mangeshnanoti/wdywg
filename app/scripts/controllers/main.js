@@ -2,6 +2,7 @@
 
 angular.module('wdywgApp')
   .controller('MainCtrl', function ($scope, $location,  AWSService, UserService ) {
+
         $scope.signedIn = function(oauth) {
             UserService.setCurrentUser(oauth)
                 .then(function(user) {

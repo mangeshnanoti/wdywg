@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wdywgApp')
-    .controller('HomeCtrl', function ($scope,$location, uiGmapGoogleMapApi, uiGmapIsReady, AWSService, UserService ) {
+    .controller('HomeCtrl', function ($scope,$location, uiGmapGoogleMapApi, uiGmapIsReady, AWSService, UserService,$interval ) {
 
 //        UserService.counter()
 //            .then(function(counter) {
@@ -9,7 +9,12 @@ angular.module('wdywgApp')
 //                console.log($scope.counter);
 //            });
 
-
+//        $scope.counter = 0;
+//        $interval(updateTime, 1000);
+//
+//        function updateTime() {
+//            $scope.counter = $scope.counter+1;
+//        }
 
         $scope.map = {
             center: {
@@ -25,7 +30,7 @@ angular.module('wdywgApp')
 
         uiGmapIsReady.promise().then(function () {
 
-            $scope.counter =  UserService.counter();
+        $scope.counter =  UserService.counter();
 
         UserService.counter()
             .then(function(counter) {
