@@ -38,8 +38,16 @@ angular
                 templateUrl: 'views/map.html',
                 controller: 'mapCtrl'
             })
-            .otherwise({
-                redirectTo: '/'
+                .when('/registerCustomer',{
+                templateUrl: '/views/template/registerCustomer.html',
+                controller: 'addBizCtrl'
+            })
+              .when('/sidePage',{
+              templateUrl: '/views/template/sidePage.html',
+              controller: 'sideCtrl'
+            })
+                .otherwise({
+                redirectTo:'/'
             });
     })
 
