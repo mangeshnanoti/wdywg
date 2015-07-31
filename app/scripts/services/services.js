@@ -2,7 +2,7 @@ angular.module('wdywgApp.services', [])
     .factory('UserService', function ($q, $http, AWSService) {
         var service = {
             _user: null,
-            business:null,
+            business: null,
             UsersTable: "Users",
             UserItemsTable: "UsersItems",
             ChargeTable: "UserCharges",
@@ -32,16 +32,16 @@ angular.module('wdywgApp.services', [])
                             .execute(function (e) {
                                 var email = e.email;
                                 AWSService.dynamo({
-                                    params: {TableName: service.UsersTable}
+                                    params: { TableName: service.UsersTable }
                                 })
                                     .then(function (table) {
                                         table.getItem({
-                                                Key: {
-                                                    'User email': {
-                                                        S: email
-                                                    }
+                                            Key: {
+                                                'User email': {
+                                                    S: email
                                                 }
-                                            },
+                                            }
+                                        },
                                             function (err, data) {
 
 
@@ -49,7 +49,7 @@ angular.module('wdywgApp.services', [])
                                                     // User didn't previously exist
                                                     var itemParams = {
                                                         Item: {
-                                                            'User email': {S: email},
+                                                            'User email': { S: email },
                                                             data: {
                                                                 S: JSON.stringify(e)
                                                             }
@@ -64,7 +64,7 @@ angular.module('wdywgApp.services', [])
                                                 } else {
                                                     service._user = JSON.parse(
                                                         data.Item.data.S
-                                                    );
+                                                        );
                                                     d.resolve(service._user);
 
                                                 }
@@ -78,54 +78,55 @@ angular.module('wdywgApp.services', [])
             },
             counter: function () {
                 var d = $q.defer();
-//                service.currentUser().then(function (user) {
-                    AWSService.dynamo({
-                        params: {TableName: service.counterTable}
-                    }).then(function (table) {
-                        table.query({
-                            TableName: service.counterTable,
-                            KeyConditions: {
-                                "deviceToken": {
-                                    "ComparisonOperator": "EQ",
-                                    "AttributeValueList": [
-                                        {S: "0123456789"}
-                                    ]
-                                }
+                //                service.currentUser().then(function (user) {
+                AWSService.dynamo({
+                    params: { TableName: service.counterTable }
+                }).then(function (table) {
+                    table.query({
+                        TableName: service.counterTable,
+                        KeyConditions: {
+                            "deviceToken": {
+                                "ComparisonOperator": "EQ",
+                                "AttributeValueList": [
+                                    { S: "0123456789" }
+                                ]
                             }
-                        }, function (err, data) {
-                            if (data) {
-                                d.resolve(data);
-                                console.log(data)
-                            } else {
-                                d.reject(err);
-                            }
-                        })
-                    });
-//                });
+                        }
+                    }, function (err, data) {
+                        if (data) {
+                            d.resolve(data);
+                            console.log(data)
+                        } else {
+                            d.reject(err);
+                        }
+                    })
+                });
+                //                });
 
                 return d.promise;
             },
 
             addBusiness: function () {
                 var d = $q.defer();
-//                service.currentUser().then(function (user) {
-                    AWSService.dynamo({
-                        params: {TableName: service.businessTable}
-                    }).then(function (table) {
+                //                service.currentUser().then(function (user) {
+                AWSService.dynamo({
+                    params: { TableName: service.businessTable }
+                }).then(function (table) {
 
-                        var itemParams = {
-                            Item: {
-                                'businessId':{S: '2015'},
-                                'businessName': {S: "businessName1" }
-                            }
-                        };
-                        table.putItem(itemParams, function (err, data) {
-                            d.resolve(data);
-                            console.log(data)
-                        })
-                    });
+                    var itemParams = {
+                        Item: {
+                            'custid': {S:'1'},
+                            'businessId': { S: '2015' },
+                            'businessName': { S: "businessName1" }
+                        }
+                    };
+                    table.putItem(itemParams, function (err, data) {
+                        d.resolve(data);
+                        console.log(data)
+                    })
+                });
 
-//                });
+                //                });
 
             }
 
@@ -159,7 +160,7 @@ angular.module('wdywgApp.services', [])
                 snsCache = $cacheFactory('sns'),
                 sqsCache = $cacheFactory('sqs');
             credentialsDefer = $q.defer(),
-                credentialsPromise = credentialsDefer.promise;
+            credentialsPromise = credentialsDefer.promise;
 
             return {
                 credentials: function () {
@@ -176,7 +177,7 @@ angular.module('wdywgApp.services', [])
                     }
                     self.config = config;
                     AWS.config.credentials =
-                        new AWS.WebIdentityCredentials(config);
+                    new AWS.WebIdentityCredentials(config);
                     credentialsDefer.resolve(AWS.config.credentials);
                 },
                 s3: function (params) {
@@ -236,7 +237,7 @@ angular.module('wdywgApp.services', [])
                             queued.resolve(url);
                         }
                         queued.promise.then(function (url) {
-                            var queue = new AWS.SQS({params: {QueueUrl: url}});
+                            var queue = new AWS.SQS({ params: { QueueUrl: url } });
                             d.resolve(queue);
                         });
                     })
