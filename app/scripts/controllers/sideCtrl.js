@@ -5,19 +5,17 @@ angular.module('wdywgApp')
 
 
         $scope.submit = function () {
-            $scope.BusinessName = this.BusinessName
-            $scope.BusinessType = this.BusinessType
-            $scope.Address = this.Address
-            $scope.City = this.City
-            $scope.ZIP = this.ZIP
-            $scope.PhoneNo = this.PhoneNo
-            $scope.DeviceId = this.DeviceId
-            $scope.FbUrl = this.FbUrl
-//            console.log($scope.City);
-
-            UserService.addBusiness()
-
-
+            $scope.Business = [{
+            BusinessName : this.BusinessName,
+            BusinessType : this.BusinessType,
+            Address : this.Address,
+            City : this.City,
+            ZIP : this.ZIP,
+            PhoneNo : this.PhoneNo,
+            DeviceId : this.DeviceId,
+            FbUrl : this.FbUrl
+        }]
+            UserService.addBusiness($scope.Business[0])
 
         }
 

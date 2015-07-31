@@ -106,19 +106,22 @@ angular.module('wdywgApp.services', [])
                 return d.promise;
             },
 
-            addBusiness: function () {
+            addBusiness: function (business) {
                 var d = $q.defer();
                 //                service.currentUser().then(function (user) {
                 AWSService.dynamo({
                     params: { TableName: service.businessTable }
                 }).then(function (table) {
-
                     var itemParams = {
-                        Item: {
-                            'custid': {S:'1'},
-                            'businessId': { S: '2015' },
-                            'businessName': { S: "businessName1" }
-                        }
+                            Item: {
+                                'custid': {S: '1'},
+                                'businessId': {S: '2015'},
+                                'businessName': {S: "businessName1" },
+                                'address':{S: '2015'},
+                                'customerName':{S: '2015'},
+                                'lan':{S: '2015'},
+                                'lat':{S: '2015'}
+                            }
                     };
                     table.putItem(itemParams, function (err, data) {
                         d.resolve(data);
