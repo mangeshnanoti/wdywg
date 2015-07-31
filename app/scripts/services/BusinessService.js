@@ -1,5 +1,5 @@
 angular.module('wdywgApp')
-    .factory('businessService', function ($q, $http) {
+    .factory('businessService', function ($scope) {
 //        var service = {
 //            name: null,
 //            businessTable: "CustomerBusiness"
