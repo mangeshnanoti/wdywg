@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: awsprovider', function () {
+describe('Service: awsProvider', function () {
 
   // load the service's module
   beforeEach(module('wdywgApp'));
 
   // instantiate service
-  var awsprovider;
-  beforeEach(inject(function (_awsprovider_) {
-    awsprovider = _awsprovider_;
+  var awsProvider;
+  beforeEach(inject(function (_awsProvider_) {
+    awsProvider = _awsProvider_;
   }));
 
   it('should do something', function () {
-    expect(!!awsprovider).toBe(true);
+    expect(!!awsProvider).toBe(true);
   });
 
 });

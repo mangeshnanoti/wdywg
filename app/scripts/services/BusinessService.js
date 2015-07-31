@@ -1,5 +1,6 @@
 angular.module('wdywgApp')
     .factory('businessService', function ($scope) {
+
 //        var service = {
 //            name: null,
 //            businessTable: "CustomerBusiness"

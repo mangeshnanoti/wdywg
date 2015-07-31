@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('wdywgApp')
-    .controller('sideCtrl', ['$scope', function ($scope, $location,AWSService, businessService) {
+    .controller('sideCtrl', function ($scope, $location,AWSService, UserService) {
 
 
         $scope.submit = function () {
@@ -13,16 +13,22 @@ angular.module('wdywgApp')
             $scope.PhoneNo = this.PhoneNo
             $scope.DeviceId = this.DeviceId
             $scope.FbUrl = this.FbUrl
-            console.log($scope.City);
+//            console.log($scope.City);
+
+            UserService.addBusiness()
+
+
+
         }
 
 
 
-//        businessService.setBusiness()
-//            .then(function(user) {
-//                $scope.user = user;
-//                $location.path('/map');
-//
+//           UserService.counter()
+//            .then(function(counter) {
+//                $scope.counter = counter;
+//                console.log($scope.counter);
 //            });
 
-    }])
+
+
+    })
