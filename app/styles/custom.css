@@ -88,13 +88,13 @@
     position: absolute;
     top:0px;
     z-index: 100;
-    border-radius: 4px;
-    background-color: #D9EDF7;
+    border-radius: 0px;
+    background-color: #808080;
     border-color: #BCE8F1;
     -webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    color: #31708F;
+    color: #B8B8B8;
 }
 
 .addBiz {
@@ -107,3 +107,11 @@
     box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     color: #31708F;
 }
+
+.form-group {
+    border-radius:0;
+}
+
+#Business-name {
+     margin-top: 5px;
+   }
