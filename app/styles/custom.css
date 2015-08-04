@@ -1,3 +1,6 @@
+body{
+    background-color: #808080;
+}
 .angular-google-map-container {
     position: absolute;
     top: 0;
@@ -96,16 +99,30 @@
     box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     color: #B8B8B8;
 }
-
-.addBiz {
+.graphics1 {
+    position: absolute;
+    top:0px;
     z-index: 100;
-    border-radius: 4px;
-    background-color: #D9EDF7;
+    border-radius: 0px;
+    background-color: #ffffff;
     border-color: #BCE8F1;
     -webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    color: #31708F;
+    color: #000000;
+}
+
+.addBiz {
+    z-index: 100;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border-color: #BCE8F1;
+    /*-webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    color: #000;
+    text-align: center;
+    padding: 50px;
 }
 
 .form-group {
@@ -115,3 +132,10 @@
 #Business-name {
      margin-top: 5px;
    }
+.circle {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: #808080;
+    /* width and height can be anything, as long as they're equal */
+}

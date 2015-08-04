@@ -4,12 +4,9 @@ angular.module('wdywgApp.services', [])
             _user: null,
             business: null,
             UsersTable: "Users",
-            UserItemsTable: "UsersItems",
-            ChargeTable: "UserCharges",
             businessTable: "CustomerBusiness",
-            Bucket: 'ng-newsletter-example',
-
             counterTable: "Counter",
+            Bucket: 'wdywg',
 
             setCurrentUser: function (u) {
                 if (u && !u.error) {
@@ -26,7 +23,6 @@ angular.module('wdywgApp.services', [])
                 if (service._user) {
                     d.resolve(service._user);
                 } else {
-
                     AWSService.credentials().then(function () {
                         gapi.client.oauth2.userinfo.get()
                             .execute(function (e) {
@@ -44,7 +40,6 @@ angular.module('wdywgApp.services', [])
                                         },
                                             function (err, data) {
 
-
                                                 if (Object.keys(data).length == 0) {
                                                     // User didn't previously exist
                                                     var itemParams = {
@@ -58,8 +53,6 @@ angular.module('wdywgApp.services', [])
                                                     table.putItem(itemParams, function (err, data) {
                                                         service._user = e;
                                                         d.resolve(e);
-
-
                                                     })
                                                 } else {
                                                     service._user = JSON.parse(
@@ -71,17 +64,19 @@ angular.module('wdywgApp.services', [])
                                             });
                                     })
                             });
-
                     });
                 }
                 return d.promise;
             },
             counter: function () {
                 var d = $q.defer();
-                //                service.currentUser().then(function (user) {
+
+                //service.currentUser().then(function (user) {
+
                 AWSService.dynamo({
                     params: { TableName: service.counterTable }
                 }).then(function (table) {
+                    console.log(table);
                     table.query({
                         TableName: service.counterTable,
                         KeyConditions: {
@@ -115,12 +110,9 @@ angular.module('wdywgApp.services', [])
                     var itemParams = {
                             Item: {
                                 'custid': {S: '1'},
-                                'businessId': {S: '2015'},
-                                'businessName': {S: "businessName1" },
-                                'address':{S: '2015'},
-                                'customerName':{S: '2015'},
-                                'lan':{S: '2015'},
-                                'lat':{S: '2015'}
+                                'businessId': {S: '4541'},
+                                'businessName': {S: business.BusinessName },
+                                'address':{S: business.Address}
                             }
                     };
                     table.putItem(itemParams, function (err, data) {
@@ -128,18 +120,71 @@ angular.module('wdywgApp.services', [])
                         console.log(data)
                     })
                 });
-
+                return d.promise;
                 //                });
+            },
+            uploadBusinessImage: function(items) {
+                var d = $q.defer();
+                service.currentUser().then(function(user) {
+                    AWSService.s3({
+                        params: {
+                            Bucket: service.Bucket
+                        }
+                    }).then(function(s3) {
+                        var file = items[0];
+                        var params = {
+                            Key: file.name,
+                            Body: file,
+                            ContentType: file.type
+                        }
 
+                        console.log(params)
+
+                        s3.putObject(params, function(err, data) {
+
+                            console.log(err)
+                            console.log(data)
+
+                            // Also, let's get a url
+//                            var params = {
+//                                Bucket: service.Bucket,
+//                                Key: file.name
+//                            };
+//                            s3.getSignedUrl('getObject', params, function (err, url) {
+//                                AWSService.dynamo({
+//                                    params: {TableName: service.UserItemsTable}
+//                                }).then(function(table) {
+//                                    var itemParams = {
+//                                        Item: {
+//                                            'ItemId': {S: file.name},
+//                                            data: {
+//                                                S: JSON.stringify({
+//                                                    itemId: file.name,
+//                                                    itemSize: file.size,
+//                                                    itemUrl: url
+//                                                })
+//                                            }
+//                                        }
+//                                    };
+//                                    table.putItem(itemParams, function(err, data) {
+//                                        d.resolve(data);
+//                                    });
+//                                });
+//                            });
+
+                            d.resolve(data);
+                        });
+                    });
+                });
+                return d.promise;
             }
-
         };
-
         return service;
     })
+
+
     .provider('AWSService', function () {
         var self = this;
-
         // Set defaults
         AWS.config.region = 'us-east-1';
 
@@ -158,12 +203,11 @@ angular.module('wdywgApp.services', [])
         }
 
         self.$get = function ($q, $cacheFactory) {
-            var s3Cache = $cacheFactory('s3Cache'),
-                dynamoCache = $cacheFactory('dynamo'),
-                snsCache = $cacheFactory('sns'),
-                sqsCache = $cacheFactory('sqs');
-            credentialsDefer = $q.defer(),
-            credentialsPromise = credentialsDefer.promise;
+            var dynamoCache = $cacheFactory('dynamo')
+            var s3Cache = $cacheFactory('s3Cache')
+
+                credentialsDefer = $q.defer(),
+                credentialsPromise = credentialsDefer.promise;
 
             return {
                 credentials: function () {
@@ -183,18 +227,6 @@ angular.module('wdywgApp.services', [])
                     new AWS.WebIdentityCredentials(config);
                     credentialsDefer.resolve(AWS.config.credentials);
                 },
-                s3: function (params) {
-                    var d = $q.defer();
-                    credentialsPromise.then(function () {
-                        var s3Obj = s3Cache.get(JSON.stringify(params));
-                        if (!s3Obj) {
-                            var s3Obj = new AWS.S3(params);
-                            s3Cache.put(JSON.stringify(params), s3Obj);
-                        }
-                        d.resolve(s3Obj);
-                    });
-                    return d.promise;
-                },
                 dynamo: function (params) {
                     var d = $q.defer();
                     credentialsPromise.then(function () {
@@ -202,79 +234,21 @@ angular.module('wdywgApp.services', [])
                         if (!table) {
                             var table = new AWS.DynamoDB(params);
                             dynamoCache.put(JSON.stringify(params), table);
-                        }
-                        ;
+                        };
                         d.resolve(table);
                     });
                     return d.promise;
                 },
-                sns: function (params) {
+                s3: function(params) {
                     var d = $q.defer();
-                    credentialsPromise.then(function () {
-                        var sns = snsCache.get(JSON.stringify(params));
-                        if (!sns) {
-                            sns = new AWS.SNS(params);
-                            snsCache.put(JSON.stringify(params), sns);
+                    credentialsPromise.then(function() {
+                        var s3Obj = s3Cache.get(JSON.stringify(params));
+                        if (!s3Obj) {
+                            var s3Obj = new AWS.S3(params);
+                            s3Cache.put(JSON.stringify(params), s3Obj);
                         }
-                        d.resolve(sns);
-                    })
-                    return d.promise;
-                },
-                sqs: function (params) {
-                    var d = $q.defer();
-                    credentialsPromise.then(function () {
-                        var url = sqsCache.get(JSON.stringify(params)),
-                            queued = $q.defer();
-                        if (!url) {
-                            var sqs = new AWS.SQS();
-                            sqs.createQueue(params, function (err, data) {
-                                if (data) {
-                                    url = data.QueueUrl;
-                                    sqsCache.put(JSON.stringify(params), url);
-                                    queued.resolve(url);
-                                } else {
-                                    queued.reject(err);
-                                }
-                            });
-                        } else {
-                            queued.resolve(url);
-                        }
-                        queued.promise.then(function (url) {
-                            var queue = new AWS.SQS({ params: { QueueUrl: url } });
-                            d.resolve(queue);
-                        });
-                    })
-                    return d.promise;
-                }
-            }
-        }
-    })
-    .provider('StripeService', function () {
-        var self = this;
-
-        self.setPublishableKey = function (key) {
-            Stripe.setPublishableKey(key);
-        }
-
-        self.$get = function ($q) {
-            return {
-                createCharge: function (obj) {
-                    var d = $q.defer();
-
-                    if (!obj.hasOwnProperty('number') || !obj.hasOwnProperty('cvc') || !obj.hasOwnProperty('exp_month') || !obj.hasOwnProperty('exp_year')
-                        ) {
-                        d.reject("Bad input", obj);
-                    } else {
-                        Stripe.card.createToken(obj,
-                            function (status, resp) {
-                                if (status == 200) {
-                                    d.resolve(resp);
-                                } else {
-                                    d.reject(status);
-                                }
-                            });
-                    }
-
+                        d.resolve(s3Obj);
+                    });
                     return d.promise;
                 }
             }

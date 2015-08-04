@@ -50,6 +50,10 @@ angular
               templateUrl: '/views/template/sidePage.html',
               controller: 'sideCtrl'
             })
+            .when('/addbizsuccess',{
+                templateUrl: '/views/template/addbizsuccess.html',
+                controller: 'sideCtrl'
+            })
                 .otherwise({
                 redirectTo:'/'
             });
