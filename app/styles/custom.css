@@ -1,5 +1,5 @@
 body{
-    background-color: #808080;
+    /*background-color: #808080;*/
 }
 .angular-google-map-container {
     position: absolute;
@@ -94,9 +94,9 @@ body{
     border-radius: 0px;
     background-color: #808080;
     border-color: #BCE8F1;
-    -webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
+    /*-webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
     color: #B8B8B8;
 }
 .graphics1 {
@@ -106,16 +106,16 @@ body{
     border-radius: 0px;
     background-color: #ffffff;
     border-color: #BCE8F1;
-    -webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);
+    /*-webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
     color: #000000;
 }
 
 .addBiz {
     z-index: 100;
     border-radius: 4px;
-    background-color: #ffffff;
+    background-color: #808080;
     border-color: #BCE8F1;
     /*-webkit-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
     /*-moz-box-shadow: 10px 13px 41px -3px rgba(0, 0, 0, 0.75);*/
