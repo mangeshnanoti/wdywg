@@ -1,0 +1,222 @@
+/*business list page*/
+.maplistactive{
+    background: #000000;font-weight: bolder;opacity: .7
+}
+/*business list page end*/
+
+/*business  map*/
+.angular-google-map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.custom-info-window {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    /*border: 1px solid white;*/
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 200px;
+    margin-top: -173px;
+    margin-left: -100px;
+}
+
+.custom-info-window a {
+    color: white;
+    text-decoration: underline;
+}
+
+.custom-info-window:after {
+    content: '';
+    position: absolute;
+    border-style: solid;
+    border-width: 15px 15px 0px 15px;
+    border-color: rgba(0, 0, 0, 0.5) transparent;
+    display: block;
+    width: 0;
+    z-index: 10;
+    top: 120px;
+    left: 89px;
+}
+
+.custom-info-window > img {
+    display: none;
+}
+
+#circle1 {
+    border: 2px solid red;
+    background: #fff;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    width: 33.33%;
+    float: left
+}
+
+#circle2 {
+    border: 2px solid blue;
+    background: #fff;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    width: 33.33%;
+    float: left
+}
+
+#circle3 {
+    border: 2px solid #800080;
+    background: #fff;
+    width: 40px;
+    height: 50px;
+    border-radius: 50%;
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    width: 33.33%;
+    float: left
+}
+
+/*business map end*/
+
+/*overview list css*/
+
+.trendsCircle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    /*background: red;*/
+    border: 2px solid yellow;
+    font-weight: bolder;
+    padding: 7px;
+}
+
+.trendsCircle2 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    /*background: red;*/
+    border: 2px solid #44DCEA;
+    font-weight: bolder;
+    padding: 7px;
+}
+
+.trendsCircle3 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    /*background: red;*/
+    border: 2px solid mediumvioletred;
+    font-weight: bolder;
+    padding: 7px;
+}
+
+.totalCount{
+    background: #ffffff;
+    padding: 75px 0px;
+}
+.listData{
+    margin: 20px 0px;
+    background: #ffffff;
+    height: 450px;
+}
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+   .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+       background-color: #E6F1F8;
+   }
+.custnbtn {
+    font-weight: bolder;
+    margin-right: 5px;
+    background: #ffffff;
+    border: 2px solid #000000;
+}
+
+.csmbtn {
+    font-weight: bolder;
+    margin-right: 5px;
+    background: #ffffff;
+    border: 2px solid #000000;
+}
+
+.active {
+    background: #000000;
+    color: #ffffff;
+    opacity: .7;
+}
+
+.custnbtn:active, .custnbtn.active {
+    outline: 0;
+    background-image: none;
+    box-shadow: none;
+}
+
+
+ .custnbtn:focus {
+     color: #ffffff;
+}
+/*overview list css END*/
+
+
+/*Daily trends*/
+
+
+.trendsfillCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    background: yellow;
+    border: 2px solid yellow;
+    font-weight: bolder;
+}
+
+.trendsfillCircle2 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    background: #44DCEA;
+    border: 2px solid #44DCEA;
+    font-weight: bolder;
+}
+.trendsfillCircle3 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 25px;
+    /*color: #fff;*/
+    /*line-height: 100px;*/
+    text-align: center;
+    background: mediumvioletred;
+    border: 2px solid mediumvioletred;
+    font-weight: bolder;
+}

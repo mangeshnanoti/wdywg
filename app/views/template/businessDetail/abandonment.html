@@ -1,0 +1,82 @@
+<div class="row">
+
+    <div ng-include="'views/template/businessDetail/businessSidebar.html'"></div>
+
+    <div class="col-md-9" style="background: #f2f2f2;">
+        <div class="col-md-6" style="height: 50px;">
+            dd.mm.yyyy hh:mm - dd.mm.yyyy hh:mm
+        </div>
+
+        <div class="col-md-6" style="height: 50px;">
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;">THIS MONTH
+            </button>
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;margin-right: 5px">THIS
+                WEAK
+            </button>
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;margin-right: 5px">TODAY
+            </button>
+        </div>
+        < <div class="col-md-12 " style="background: #ffffff;">
+        <div class="col-md-12 text-center" style="font-size: 45px;padding-bottom: 30px;padding-top: 50px;">
+            647
+            <sub style="font-size: 15px">PEOPLE</sub>
+        </div>
+        <div class="col-md-12" style="padding-bottom: 50px;">
+            <div class="col-md-4 text-center">
+                <div class="pull-right">
+                    <div class=" col-md-6 trendsfillCircle"></div>
+                    <div class="col-md-6">
+                        647 PEOPLE
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12  center-block">
+                    <div class=" col-md-6">
+                        <div class="trendsfillCircle2 pull-right"></div>
+                    </div>
+                    <div class="col-md-6">
+                        647<br>
+                        <span>PEOPLE</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="pull-left">
+                    <div class=" col-md-6 trendsfillCircle3"></div>
+                    <div class="col-md-6">
+                        647 <br>
+                        <span>PEOPLE</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+
+            <button class="btn" ng-click="table()"><span> <i class="glyphicon glyphicon-list-alt"></i> Table</span>
+            </button>
+            <button class="btn" ng-click="chart()"><span>  <i class="glyphicon glyphicon-signal"></i> chart</span>
+            </button>
+
+            <button type="button" class="btn pull-right"
+                    style="background: #ffffff;color: #000000;font-weight: bolder;border: 1px solid #000000">EXPORT
+            </button>
+        </div>
+        <div class="col-md-12" style="margin:20px 0px;background: #ffffff;height: 450px;">
+
+            <div ng-show="showtable" id="businessTableView">
+                <div ng-include="'views/template/businessDetail/abondonmentTable.html'"></div>
+            </div>
+
+            <div ng-show="showchart" id="chartContainer"></div>
+
+        </div>
+
+    </div>
+</div>

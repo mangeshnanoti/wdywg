@@ -1,0 +1,62 @@
+<div class="row">
+
+    <div ng-include="'views/template/businessDetail/businessSidebar.html'"></div>
+
+    <div class="col-md-9">
+        <div class="col-md-6 menudiv" style="height: 50px;">
+            <div class="row">
+              <input class="col-md-6" id="datepicker" type="text" data-ng-datepicker data-ng-options="datepickerOptions" data-ng-model="fdate">
+
+              <input class="col-md-6" id="datepicker1" type="text" data-ng-datepicker data-ng-options="datepickerOptions1" data-ng-model="tdate">
+            </div>
+
+        </div>
+        <div class="col-md-6 dashdiv" style="height: 50px;">
+            <button type="button" class="btn custnbtn pull-right" ng-class="{true: 'active', false: ''}[bthisMonth]" ng-click="thisMonth()">THIS MONTH </button>
+            <button type="button" class="btn custnbtn pull-right" ng-class="{true: 'active', false: ''}[bthisWeak]" ng-click="thisWeak()">THIS WEAK</button>
+            <button type="button" class="btn custnbtn pull-right" ng-class="{true: 'active', false: ''}[btoday]" ng-click="today()">TODAY</button>
+        </div>
+        <div class="col-md-12 totalCount">
+            <div class="col-md-4">
+                <div class="pull-right text-center">
+                    <div class="trendsCircle">
+                        {{totalppl}}
+                       <span style="font-size: 18px;">People</span>
+                    </div>
+                    <div style="margin-top: 10px;font-weight: bold">08%</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="text-center">
+                    <div class="trendsCircle2 center-block">
+                        {{totalveh}}
+                        <span style="font-size: 18px;"> vehicles </span>
+                    </div>
+                    <div style="margin-top: 10px;font-weight: bold">22%</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pull-left text-center">
+                    <div class="trendsCircle3">
+                        {{totalprod}} <br>
+                        <span style="font-size: 18px;"> products </span>
+                    </div>
+                    <div style="margin-top: 10px;font-weight: bold">--%</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+            <button class="btn custnbtn" ng-class="{true: 'active', false: ''}[showtable]"  ng-click="table()"><span> <i class="glyphicon glyphicon-list-alt"></i> Table</span>
+            </button>
+            <button class="btn custnbtn" ng-class="{true: 'active', false: ''}[showchart]" ng-click="chart()"><span>  <i class="glyphicon glyphicon-signal"></i> chart</span>
+            </button>
+            <button type="button" class="btn csmbtn pull-right">EXPORT </button>
+        </div>
+        <div class="col-md-12 listData">
+            <div ng-show="showtable" id="businessTableView">
+                <div ng-include="'views/template/businessDetail/overViewTable.html'"></div>
+            </div>
+            <div ng-show="showchart" id="chartContainer"></div>
+        </div>
+    </div>
+</div>

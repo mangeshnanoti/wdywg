@@ -17,6 +17,8 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="styles/custom.css">
+      <link rel="stylesheet" href="styles/sidebar.css">
+      <link rel="stylesheet" href="styles/businessDetail.css">
     <!-- endbuild -->
   </head>
   <body ng-app="wdywgApp">
@@ -72,19 +74,14 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/home.js"></script>
-    <script src ="scripts/controllers/addBizCtrl.js"></script>
-    <script src ="scripts/controllers/sideCtrl.js"></script>
-    <!--<script src="scripts/services/home.js"></script>-->
     <!--<script src="scripts/directives/googledirective.js"></script>-->
     <script src="scripts/services/services.js"></script>
     <script src="scripts/services/directives.js"></script>
-    <!--<script src="scripts/services/BusinessService.js"></script>-->
-    <script src="scripts/controllers/map.js"></script>
     <script src="scripts/controllers/dashboard.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
     <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
     <script src="scripts/customjs/canvasjs.min.js"></script>
+    <script src="https://rawgithub.com/cletourneau/angular-bootstrap-datepicker/master/dist/angular-bootstrap-datepicker.js" charset="utf-8"></script>
 
 
     <script type="text/javascript">
@@ -97,6 +94,13 @@
 
 
     <script src="scripts/services/awsprovider.js"></script>
+    <script src="scripts/controllers/overview.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/businessdetails.js"></script>
+    <script src="scripts/controllers/counter.js"></script>
+    <script src="scripts/controllers/businesslist.js"></script>
+    <script src="scripts/services/BusinessService.js"></script>
+    <script src="scripts/services/overviewservice.js"></script>
     <!-- endbuild -->
   </body>
 </html>

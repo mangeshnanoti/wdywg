@@ -1,0 +1,27 @@
+<table class="table borderless table-striped " >
+    <thead style="border-bottom: 1px dashed #808080">
+    <tr >
+        <th class="text-center">DATE</th>
+        <th class="text-center">TOTAL PEOPLE</th>
+        <th class="text-center">TOTAL VEHICLES</th>
+        <th class="text-center">TOTAL PRODUCTS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="rec in overViewJson"  class="text-center">
+        <td>
+            {{ rec.date }}
+        </td>
+        <td>
+           {{ rec.total_people }}
+        </td>
+        <td>
+           {{ rec.total_vehicles }}
+        </td>
+        <td>
+            {{ rec.total_products }}
+        </td>
+    </tr>
+    </tbody>
+</table>
+

@@ -7,7 +7,7 @@ angular.module('wdywgApp')
             UserService.setCurrentUser(oauth)
                 .then(function(user) {
                     $scope.user = user;
-                    $location.path('/sidePage');
+                    $location.path('/businessList');
 
                 });
 

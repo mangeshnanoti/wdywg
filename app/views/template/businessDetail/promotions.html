@@ -1,0 +1,88 @@
+<div class="row">
+
+    <div ng-include="'views/template/businessDetail/businessSidebar.html'"></div>
+
+    <div class="col-md-9" style="background: #f2f2f2;">
+        <div class="col-md-6" style="height: 50px;">
+            dd.mm.yyyy hh:mm - dd.mm.yyyy hh:mm
+        </div>
+
+        <div class="col-md-6" style="height: 50px;">
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;">THIS MONTH
+            </button>
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;margin-right: 5px">THIS
+                WEAK
+            </button>
+            <button type="button" class="btn pull-right"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7;margin-right: 5px">TODAY
+            </button>
+        </div>
+        <div class="col-md-12 " style="background: #ffffff;">
+            <div class="col-md-12 text-center">
+
+                <i style="font-size: 20px;margin-top: 15px;" class="glyphicon glyphicon-exclamation-sign"></i> <span style="font-size: 15px">DID YOU KNOW</span>
+
+            </div>
+            <div class="col-md-12 text-center" style="margin-top: 10px">
+                <span><i style="font-size: 70px;" class="glyphicon glyphicon-time"></i></span>
+            </div>
+
+            <div class="col-md-12 text-center" style="font-size: 30px;margin-bottom: 20px;">
+                Total guests peaks at 6:15 PM Everyday
+            </div>
+
+
+        </div>
+        <div class="col-md-12" style="margin-top: 20px;">
+            <button class="btn" ng-click="table()"><span> <i class="glyphicon glyphicon-list-alt"></i> Table</span>
+            </button>
+            <button class="btn" ng-click="chart()"><span>  <i class="glyphicon glyphicon-signal"></i> chart</span>
+            </button>
+            <button type="button" class="btn pull-right"
+                    style="background: #ffffff;color: #000000;font-weight: bolder;border: 1px solid #000000">EXPORT
+            </button>
+            <button type="button" class="btn pull-right" data-toggle="modal" data-target="#myModal"
+                    style="background: #ffffff;color: #000000;font-weight: bolder;border: 1px solid #000000;margin-right: 20px;">ADD NEW PROMO
+            </button>
+        </div>
+        <div class="col-md-12" style="margin:20px 0px;background: #ffffff;height: 450px;">
+            <div ng-show="showtable" id="businessTableView">
+                <div ng-include="'views/template/businessDetail/promotionsTable.html'"></div>
+            </div>
+            <div ng-show="showchart" id="chartContainer"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="col-md-12">Name</div>
+                <div class="col-md-12">Enter a name for the Special you are running</div>
+                <input type="text" placeholder="Enter Name">
+                <div class="col-md-12">Date & Time</div>
+                <div class="col-md-12">Enter the start and end date & time for the Special</div>
+                <div class="col-md-12">
+
+                </div>
+
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>

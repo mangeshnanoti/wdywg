@@ -1,54 +1,20 @@
 angular.module('wdywgApp')
-    .factory('businessService', function ($scope) {
+    .factory('businessService', function () {
 
-//        var service = {
-//            name: null,
-//            businessTable: "CustomerBusiness"
 
-//            setBusiness: function () {
-//                AWSService.credentials().then(function () {
-//                    AWSService.dynamo({
-//                        params: {TableName: service.businessTable}
-//                    })
-//                        .then(function (table) {
-//                            table.getItem({
-//                                    Key: {
-//                                        'businessName': {
-//                                            S: "bar"
-//                                        }
-//                                    }
-//                                },
-//                                function (err, data) {
-//
-//                                    if (Object.keys(data).length == 0) {
-//                                        // User didn't previously exist
-//                                        var itemParams = {
-//                                            Item: {
-//                                                'businessName': {S: businessName},
-//                                                data: {
-//                                                    S: JSON.stringify(e)
-//                                                }
-//                                            }
-//                                        };
-//                                        table.putItem(itemParams, function (err, data) {
-//                                            service.name = e;
-//                                            d.resolve(e);
-//
-//
-//                                        })
-//                                    } else {
-//                                        service.name = JSON.parse(
-//                                            data.Item.data.S
-//                                        );
-//                                        d.resolve(service.name);
-//
-//                                    }
-//                                });
-//                        })
-//
-//                });
-//            }
-//
-//        }
-//        return service;
+        return {
+
+            getBusinessList: function() {
+                return [
+                    {businessName: "23-02-2015", address: "1624 Barton Springs Rd",address2: "Austin TX 78704", people: "534", vehicle: "202", products: "--"},
+                    {businessName: "23-02-2015", address: "1624 Barton Springs Rd",address2:"Austin TX 78704", people: "534", vehicle: "202", products: "235"},
+                    {businessName: "23-02-2015", address: "1624 Barton Springs Rd",address2:"Austin TX 78704", people: "--", vehicle: "202", products: "--"},
+                    {businessName: "23-02-2015", address: "1624 Barton Springs Rd",address2:"Austin TX 78704", people: "534", vehicle: "--", products: "235"},
+                    {businessName: "23-02-2015", address: "1624 Barton Springs Rd",address2:"Austin TX 78704", people: "534", vehicle: "202", products: "235"}
+                ];
+            }
+
+        };
+
+
     })

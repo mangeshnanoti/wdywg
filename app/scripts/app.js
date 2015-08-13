@@ -6,9 +6,11 @@ angular
         'ngResource',
         'ngSanitize',
         'ngRoute',
+        'ng-bootstrap-datepicker',
         'uiGmapgoogle-maps',
         'wdywgApp.services',
         'wdywgApp.directives'
+
     ])
     .config(function (AWSServiceProvider) {
         AWSServiceProvider
@@ -30,34 +32,52 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/map', {
-                templateUrl: 'views/home.html',
-                controller: 'HomeCtrl'
-            })
-            .when('/ngMap', {
-                templateUrl: 'views/map.html',
-                controller: 'mapCtrl'
-            })
-                .when('/registerCustomer',{
-                templateUrl: '/views/template/registerCustomer.html',
-                controller: 'addBizCtrl'
-            })
             .when('/dashboard', {
-                templateUrl: 'views/dashboard.html',
+                templateUrl: 'views/template/dashboard.html',
                 controller: 'DashboardCtrl'
             })
-              .when('/sidePage',{
-              templateUrl: '/views/template/sidePage.html',
-              controller: 'sideCtrl'
+            .when('/login', {
+                templateUrl: '/views/template/login.html',
+                controller: 'LoginCtrl'
             })
-            .when('/addbizsuccess',{
-                templateUrl: '/views/template/addbizsuccess.html',
-                controller: 'sideCtrl'
+            .when('/businessList', {
+                templateUrl: '/views/template/businessDetail/businessList.html',
+                controller: 'BusinesslistCtrl'
             })
-                .otherwise({
-                redirectTo:'/'
+            .when('/businessListMap', {
+                templateUrl: '/views/template/businessDetail/businessListMap.html',
+                controller: 'BusinesslistCtrl'
+            })
+            .when('/overView', {
+                templateUrl: '/views/template/businessDetail/overView.html',
+                controller: 'OverviewCtrl'
+            })
+            .when('/dailyTrends', {
+                templateUrl: '/views/template/businessDetail/dailyTrends.html',
+                controller: 'OverviewCtrl'
+            })
+            .when('/promotions', {
+                templateUrl: '/views/template/businessDetail/promotions.html',
+                controller: 'OverviewCtrl'
+            })
+            .when('/abandonment', {
+                templateUrl: '/views/template/businessDetail/abandonment.html',
+                controller: 'OverviewCtrl'
+            })
+            .when('/counterName', {
+                templateUrl: '/views/template/businessDetail/counterName.html',
+                controller: 'OverviewCtrl'
+            })
+            .when('/counterConfiguration', {
+                templateUrl: '/views/template/counter/counterConfiguration.html',
+                controller: 'CounterCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
             });
     })
+
+
 
 
 window.onLoadCallback = function () {

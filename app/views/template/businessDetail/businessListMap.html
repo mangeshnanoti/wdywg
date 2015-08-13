@@ -1,0 +1,47 @@
+<div   class="row angular-google-map-container" >
+    <div class="col-md-12" style="height: 100px;padding-top: 35px;z-index: 1;">
+        <div class="pull-right">
+            <button type="button" class="btn"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7">ADD NEW BUSINESS
+            </button>
+            <!--<button class="btn"  ng-class="{true: 'maplistactive', false: ''}[showBusinessMap]" ng-click="ShowMapView()">-->
+                <!--<span class="glyphicon glyphicon-picture "></span>-->
+            <!--</button>-->
+            <button class="btn" ng-class="{true: 'maplistactive', false: ''}[showBusinessList]" ng-click="ShowListView()">
+                <span class="glyphicon glyphicon-tasks white"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--// list div-->
+    <div class="">
+        <ui-gmap-google-map center="map.center" zoom="map.zoom" dragging="map.dragging" draggable="true"
+                            control="map.control">
+            <ui-gmap-markers models="map.markers" coords="'self'"
+                             icon="'{https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png}'"
+                             fit="true">
+                <ui-gmap-windows show="'showWindow'" options="'options'">
+                    <div ng-non-bindable>
+                        <p class="text-center" style="font-size: 15px;;font-weight: bold;">Austin</p>
+
+                        <div style="width: 100%">
+                            <div id="circle1">
+                                <div class="text-center" style="margin-top: 10px;">{{men}}</div>
+                                <div class="text-center" style="margin-top: 0px;">Men</div>
+                            </div>
+                            <div id="circle2">
+                                <div class="text-center" style="margin-top: 10px;">{{women}}</div>
+                                <div class="text-center" style="margin-top: 0px;">Women</div>
+                            </div>
+                            <div id="circle3">
+                                <div class="text-center" style="margin-top: 10px;">200</div>
+                                <div class="text-center" style="margin-top: 0px;">Products</div>
+                            </div>
+                        </div>
+                    </div>
+                </ui-gmap-windows>
+            </ui-gmap-markers>
+        </ui-gmap-google-map>
+    </div>
+
+</div>

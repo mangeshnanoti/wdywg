@@ -1,0 +1,70 @@
+<div  class="row" style="background: #ffffff;top:0px;margin-top: -20px;">
+
+    <div class="col-md-12" style="height: 100px;padding-top: 35px;">
+        <div class="pull-right">
+            <button type="button" class="btn"
+                    style="background: #000000;color: #ffffff;font-weight: bolder;opacity: .7">ADD NEW BUSINESS
+            </button>
+            <button class="btn"  ng-class="{true: 'maplistactive', false: ''}[showBusinessMap]" ng-click="ShowMapView()">
+                <span class="glyphicon glyphicon-picture "></span>
+            </button>
+            <!--<button class="btn" ng-class="{true: 'maplistactive', false: ''}[showBusinessList]" ng-click="ShowListView()">-->
+                <!--<span class="glyphicon glyphicon-tasks white"></span>-->
+            <!--</button>-->
+        </div>
+    </div>
+
+        <div class="col-md-12" style="height: 50px;background: #f2f2f2;padding-top: 8px;">
+            <div class="dropdown col-md-2">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    View by Business
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="dropdown col-md-2">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="true">
+                    Sort by Name
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                </ul>
+            </div>
+            <div class="dropdown col-md-8"></div>
+        </div>
+
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th class="text-center">BUSINESS</th>
+                    <th class="text-center">ADDRESS</th>
+                    <th class="text-center">PEOPLE</th>
+                    <th class="text-center">VEHICLES</th>
+                    <th class="text-center">PRODUCTS</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="overView()" ng-repeat="rec in businessList"  class="text-center">
+                    <td class="bname">{{rec.businessName}}</td>
+                    <td>{{rec.address}}<br>{{rec.address2}}</td>
+                    <td class="count">{{rec.people}}</td>
+                    <td class="count">{{rec.vehicle}}</td>
+                    <td class="count">{{rec.vehicle}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+</div>
